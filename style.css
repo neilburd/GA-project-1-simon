@@ -1,0 +1,58 @@
+.red {
+  background-color: red;
+  float:left;
+  width: 200px;
+  height:200px;
+}
+.redPlay {
+
+}
+.red:hover {
+  background-color: #333;
+  border:5px solid #333;
+}
+
+.blue {
+  background-color: blue;
+  float:left;
+  width: 200px;
+  height:200px;
+}
+.bluePlay {
+
+}
+
+.blue:hover {
+  background-color: #333;
+  border:5px solid #333;
+
+}
+.green {
+  background-color: green;
+  float:left;
+  width: 200px;
+  height:200px;
+}
+.greenPlay {
+
+}
+
+.green:hover{
+  background-color: #333;
+  border:5px solid #333;
+
+}
+.yellow {
+  background-color: yellow;
+  float:left;
+  width: 200px;
+  height:200px;
+}
+.yellowPlay {
+
+}
+.yellow:hover {
+  background-color: #333;
+  border:5px solid #333;
+
+}

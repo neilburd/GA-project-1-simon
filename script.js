@@ -2,10 +2,10 @@ $(document).ready(function(){
   console.log("Hello World!");
 
 ////set variable colors
-  let red = 0;
-  let blue = 1;
-  let green = 2;
-  let yellow = 3;
+  const red = 0;
+  const blue = 1;
+  const green = 2;
+  const yellow = 3;
 
 let sequenceLength = 4;
 
@@ -15,7 +15,7 @@ let number4 = Math.floor(number*4);
 let sequence = [];
 let sequenceWords = [];
 
-userArray = [];
+let userArray = [];
 
 console.log(number);
 console.log(number4);
@@ -58,13 +58,26 @@ console.log(sequenceWords);
 $("h2").html(sequenceWords)
 
 let pushUserserArray = function(){
+  console.log("Click WORKS");
 
+  if ($(this).hasClass('red')){
     console.log("RED");
+    userArray.push(red);
+  } else if ($(this).hasClass('blue')) {
+    console.log("BLUE");
+    userArray.push(blue);
+  } else if ($(this).hasClass('green')) {
+    console.log("GREEN");
+    userArray.push(green);
+  } else if ($(this).hasClass('yellow')){
+    console.log("YELLOW");
+    userArray.push(yellow);
   }
-  console.log($(this));
+
+  console.log(userArray);
   // userArray.push($(this));
   // console.log(userArray);
-}
+};
 
 
 

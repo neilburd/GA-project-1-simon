@@ -1,62 +1,29 @@
+.color {
+  float:left;
+  width: 200px;
+  height: 200px;
+  opacity: 0.25;
+  -webkit-transition: opacity 250ms ease;
+	-moz-transition: opacity 250ms ease;
+	-ms-transition: opacity 250ms ease;
+	-o-transition: opacity 250ms ease;
+	transition: opacity 250ms ease;
+}
+
 .red {
   background-color: red;
-  float:left;
-  width: 200px;
-  height:200px;
-}
-.redPlay {
-
-}
-.red:hover {
-  -moz-box-shadow:    inset 0 0 30px #000000;
-  -webkit-box-shadow: inset 0 0 30px #000000;
-   box-shadow:         inset 0 0 30px #000000;
-
 }
 
-.blue {
-  background-color: blue;
-  float:left;
-  width: 200px;
-  height:200px;
-}
-.bluePlay {
-
-}
-
-.blue:hover {
-  -moz-box-shadow:    inset 0 0 30px #000000;
-  -webkit-box-shadow: inset 0 0 30px #000000;
-   box-shadow:         inset 0 0 30px #000000;
-}
 .green {
   background-color: green;
-  float:left;
-  width: 200px;
-  height:200px;
 }
-.greenPlay {
-
-}
-
-.green:hover{
-  -moz-box-shadow:    inset 0 0 30px #000000;
-  -webkit-box-shadow: inset 0 0 30px #000000;
-   box-shadow:         inset 0 0 30px #000000;
-
+.blue {
+  background-color: blue;
 }
 .yellow {
   background-color: yellow;
-  float:left;
-  width: 200px;
-  height:200px;
 }
-.yellowPlay {
 
-}
-.yellow:hover {
-  -moz-box-shadow:    inset 0 0 30px #000000;
-  -webkit-box-shadow: inset 0 0 30px #000000;
-   box-shadow:         inset 0 0 30px #000000;
-
+.lightUp {
+  opacity: 1;
 }

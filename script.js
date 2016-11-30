@@ -2,27 +2,50 @@
 $(document).ready(function(){
   console.log("Hello World!");
 
-////set variable colors
-  const red = 0;
-  const blue = 1;
-  const green = 2;
-  const yellow = 3;
-
-let sequenceLength = 0;
-
 let sequence = [];
-let sequenceWords = [];
+let checkSequence = sequence;
 
-let userArray = [];
 let currentClick;
+let whatToCheck = [];
+
+
 let clickCount;
 
-function newGame() {
-  addToSequence();
+let currentRound = 1;
 
+///// start buttom
+$('#startGame').on('click', newGame);
+///// color buttons
+$(".red").on('click', checkCurrent);
+$(".blue").on('click', checkCurrent);
+$(".green").on('click', checkCurrent);
+$(".yellow").on('click', checkCurrent);
+
+/// initialized om start button click
+function newGame() {
+  /// adds one number to the sequence
+  addToSequence();
+  ///// Animates the sequence.
   animate(sequence);
+  /// calls new Round /// changes the text to be what the round is
+  newRound();
+
+  console.log(sequence + " sequence @ start of round");
+  console.log(checkSequence + " checkSequence");
 }
 
+function newRound(){
+  /// place the round on the board
+  $('p').html('Round: ' + currentRound);
+  /// add one to the click count
+  currentRound++;
+  // console.log(currentRound);
+  clickCount = 0;
+}
+// console.log(sequence + " sequence");
+
+////  used some of the code found here for the animate sequence
+/////   https://codeplanet.io/building-simon-says-javascript/
 
 function animate(sequence){
   // console.log(sequence); /// returns sequence
@@ -38,112 +61,96 @@ function animate(sequence){
 
 }
 
+
+/// the lightUp function
 function lightUp(color) {
   let colorToLight = $('[data-color=' + color + ']').addClass('lightUp');
-
   // console.log(colorToLight + " colorToLight"); /// returns Object
-
   window.setTimeout(function() {
     colorToLight.removeClass('lightUp');
   }, 300);
 }
 
+
+////////////////////////////////////
+
+/// adds a new number to the sequence
 function addToSequence(){
-
-  sequence.push(Math.floor(Math.random()*4));
-
-  console.log(sequence);
-
-
+  //// push in a rendom number 1-4
+  sequence.push(randomNumber());
+  // console.log(sequence);
 }
-// newGame();
-// let createSequence = function() {
-//   for (let i = 0; i <= sequenceLength; i++) {
-//     let rand = Math.floor(Math.random()*4);
-//     sequence.push(rand);
-//
-//     if ( rand === red ){
-//       // console.log("red")
-//       sequenceWords.push("red ");
-//     } else if ( rand === green ){
-//       // console.log("green");
-//       sequenceWords.push("green ");
-//     } else if ( rand === blue ){
-//       // console.log("blue");
-//       sequenceWords.push("blue ");
-//     } else if ( rand === yellow ){
-//       // console.log("yellow");
-//       sequenceWords.push("yellow ");
-//     };
-//
-//   };
-// };
+// console.log(sequence);
 
-// createSequence();
-console.log(sequence);
-/// put the sequence on the screen
-$("h2").html(sequenceWords);
+/// creates a random number between 0-3
+function randomNumber(){
+  return  Math.floor(Math.random()*4);
+}
 
-$('#startGame').on('click', newGame);
+ // let copy = sequence.slice(0);
+ // console.log(copy);
 
-let pushUserserArray = function(){
 
-  if ($(this).hasClass('red')){
-    console.log("RED");
-    userArray.push(red);
-    currentClick = red;
-    checkLength();
-    // checkIfSame();
+function checkCurrent(){
 
-  } else if ($(this).hasClass('blue')) {
-    console.log("BLUE");
-    userArray.push(blue);
-    currentClick = blue;
-    checkLength();
-    // checkIfSame();
+  console.log(sequence + " sequence on Click");
 
-  } else if ($(this).hasClass('green')) {
-    console.log("GREEN");
-    userArray.push(green);
-    currentClick = green;
-    checkLength();
-    // checkIfSame();
+  console.log(checkSequence[clickCount] + " checkSequence @ clickcount");
 
-  } else if ($(this).hasClass('yellow')){
-    console.log("YELLOW");
-    userArray.push(yellow);
-    currentClick = yellow;
+  let colorClicked = $(this).attr('class');
+  console.log(colorClicked);
 
-    checkLength();
-    // checkIfSame();
+  switch (colorClicked) {
+    case "color red":
+      console.log("RED");
+      break;
+    case "color blue":
+      console.log("BLUE");
+      break;
+    case "color green":
+      console.log("GREEN");
+      break;
+    case "color yellow":
+      console.log("YELLOW");
+      break;
+
+    // default:
   }
+  // whatToCheck = checkSequence.slice(0,1);
+
+  // whatToCheck = checkSequence.shift();
+  //
+  //
+  // console.log(checkSequence + " checkSequence");
+  //
+  // console.log(whatToCheck + " whatToCheck");
+  //
+  // console.log(sequence + " sequence");
+
+
+
+
+  clickCount++;
+  console.log(clickCount + " clickCount");
+  console.log("-----------------------------------");
+
 };
 
-$(".red").on('click', pushUserserArray);
-$(".blue").on('click', pushUserserArray);
-$(".green").on('click', pushUserserArray);
-$(".yellow").on('click', pushUserserArray);
 
-/// CHECK IF CURRENT CLICK IS SAME
-// checkIfSame = function(){
-//   whatToCheck = userArray.length;
-//   console.log(whatToCheck);
-//
-//   if (sequence[clickCount] === currentClick){
-//     console.log("YOU GOT IT RIGHT");
-//
-//   } else {
-//     console.log("INCORRECT");
-//   };
-// };
-//// check if click completes the sequence
 
-checkLength = function(){
-  if (sequence.length === userArray.length){
-    console.log("SAME LENGTH!");
-  } else {
-    console.log("Keep Going!");
-  }
-}
+
 
 });////****END OF DOCUMENT READY
+// let keyValue = $(".color").data("color");
+// let myClass = $(this).attr('data-color');
+//
+//   userArray.push(parseInt(myClass));
+//   let lengthUser = userArray.length
+//   // console.log(clickCount + " CLICK COUNT");
+//   // console.log(userArray + " USER ARRAY"); //records what the user clicks\
+//   // console.log(sequence + " SEQUENCE");
+//   // console.log(keyValue + " KEYVALUE"); /// always returning 0
+//   //
+//
+//   //// get the 0 indexed item in the sequece
+//

@@ -1,6 +1,7 @@
 body{
   background-color: #ccc;
-  background-image: url('img/ps_neutral.png')
+  background-image: url('img/ps_neutral.png');
+  font-family: Helvetica;
 }
 
 h1 {
@@ -14,7 +15,16 @@ p {
   text-align: center;
 
 }
-#container {
+
+header {
+  color:black;
+  width: 400px;
+  /*background-color: red;*/
+  margin: 0 auto;
+  text-align: center;
+}
+
+#containerGame {
   width: 400px;
   height: 400px;
   margin: 50px auto;
@@ -22,10 +32,13 @@ p {
   border-radius: 100%;
   border: 10px solid #fff;
   background-color: #fff;
-  /*box-shadow:  3px 3px 10px grey;*/
 
 }
 
+.highScores {
+  text-align: center;
+
+}
 
 .color {
   float:left;

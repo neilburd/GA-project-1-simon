@@ -7,7 +7,8 @@ let clickCount = 0;
 let currentRound = 0;
 let speed = 600;
 let audio ;
-
+let highScores = [];
+let score = 0;
 
 ///// start buttom
 $('#startGame').on('click', newGame);
@@ -21,21 +22,36 @@ $(".yellow").on('click', checkCurrentClick);
 function newGame() {
   resetGame();
   newRound();
-// console.log("--------NEW GAME---------");
-// console.log("-----------------------------------");
+}
+
+
+function delayPlay(toDelay, time) {
+  window.setTimeout(toDelay, time);
 }
 
 ///// ******** CREATES A NEW ROUND
 function newRound(){
   currentRound++;
   clickCount = 1;
-  speed = speed - 20;
+  speed = speed - 50;
+
   addToSequence();
-  animate(sequence);
-  /// place the round on the board
+
+/////// ****** Delay the animation
+  delayPlay(function(){animate(sequence)},300);
   $('p').html('Round: ' + currentRound);
-  // console.log(currentRound + " current Round @ newRound");
 }
+
+function highScore(){
+
+  highScores.push(currentRound-1);
+  highScores.sort();
+  highScores.reverse();
+
+  $('.highScores h3').html('Your High Score is: '+ highScores[0])
+
+}
+
 
 /// ******** Resets the game if the user clicks an incorrect color
 function resetGame() {
@@ -43,6 +59,7 @@ function resetGame() {
   currentRound = 0;
   clickCount = 1;
   speed = 600;
+  score = 0;
   // console.log("--------  RESET THE GAME -------------");
 }
 // console.log(sequence + " sequence");
@@ -92,39 +109,28 @@ function checkCurrentClick(){
 // console.log(audioID + " AudioID ");
   playAudio(audioID);
   lightUp(colorClicked);
-      // console.log(sequence + " ///sequence on Click");
-      // console.log(sequence[clickCount] + " ///sequence @ index clickCount");
-      // console.log(clickCount + " clickcount @ time it checks"); ///returns 0
-      // console.log(seqLength + " sequence length variable");
-    /// check sequence length to click count length
     if (clickCount < seqLength) { //// checks if under the sequence.length
       if (checkBoth(numbToCheck, colorClicked)){
           clickCount++;
-          // console.log(clickCount + " clickCount after the values equate to the same");
-          // console.log("Under Length of sequence and correct");
-          // console.log("-----------------------------------");
+          // score++;
       } else {  ///// triggers game over
           $('p').html('Sorry Game Over')
+          highScore();
           resetGame();
-          // console.log("Under Length of sequence and incorrect");
-          // console.log("-----------------------------------");
       }
 
     } else if (clickCount === seqLength){ // checks if the two are the same so that the next round can be triggered
       if (checkBoth(numbToCheck, colorClicked)){ ///if  undnder or equal to the sequence length  and numbToCheck and the color are correct
+          // score++;
           newRound();
-          console.log("clicks equal to Length of sequence and correct");
-          console.log("-----------------------------------");
+
       } else {  ///// triggers game over
           $('p').html('Sorry Game Over')
+          highScore();
 
           resetGame();
-          console.log("clicks equal to Length of sequence and incorrect");
-          console.log("-----------------------------------");
       }
     }
-  console.log(clickCount + " clickCount");
-  console.log("----------- END OF CLICK ----------------");
 }
 
 ////  used some of the code found here for the animate sequence

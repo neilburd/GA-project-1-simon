@@ -13,14 +13,35 @@
   <p>Please press start to begin game.</p>
 
   <div id="container">
-    <!-- <h2></h2> -->
-    <button id="startGame" type="button">START</button>
-    <div class="color red" data-color="0"></div>
-    <div class="color blue" data-color="1"></div>
-    <div class="color green" data-color="2"></div>
-    <div class="color yellow" data-color="3"></div>
+
+      <button id="startGame" type="button">START</button>
+
+      <div class="color red hover" data-color="0">
+        <audio autoplay>
+        </audio>
+      </div>
+
+      <div class="color blue hover" data-color="1">
+        <audio autoplay>
+        </audio>
+      </div>
+
+      <div class="color green hover" data-color="2">
+        <audio autoplay>
+        </audio>
+      </div>
+
+      <div class="color yellow hover" data-color="3">
+        <audio autoplay>
+          <!-- <source id = "audio3" src="sounds/4.mp3" type="audio/mp3"> -->
+        </audio>
+      </div>
 
   </div><!--END continer -->
+
+  <div id="scoreBoard">
+  </div>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="script.js"></script>

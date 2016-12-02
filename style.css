@@ -1,3 +1,8 @@
+body{
+  background-color: #ccc;
+  background-image: url('img/ps_neutral.png')
+}
+
 h1 {
   font-family: Helvetica;
   text-align: center;
@@ -14,8 +19,11 @@ p {
   height: 400px;
   margin: 50px auto;
   position: relative;
-  border-radius: 310px;
-  /*border: 10px solid black;*/
+  border-radius: 100%;
+  border: 10px solid #fff;
+  background-color: #fff;
+  /*box-shadow:  3px 3px 10px grey;*/
+
 }
 
 
@@ -23,46 +31,52 @@ p {
   float:left;
   width: 180px;
   height: 180px;
-  opacity: 0.35;
-  border: 10px solid black;
-
-
-
-  -webkit-transition: opacity 100ms ease;
-	-moz-transition: opacity 100ms ease;
-	-ms-transition: opacity 100ms ease;
-	-o-transition: opacity 100ms ease;
-	transition: opacity 100ms ease;
+  opacity: 0.3;
+  margin: 10px;
+  /*border: 10px solid black;*/
+  -webkit-transition: opacity 30ms ease;
+	-moz-transition: opacity 30ms ease;
+	-ms-transition: opacity 30ms ease;
+	-o-transition: opacity 30ms ease;
+	transition: opacity 30ms ease;
+  /*transition: opacity 100ms ease;*/
 }
 
-.color:hover {
+.hover:hover {
   opacity: .5;
+
 }
 
 .red {
   background-color: red;
-  border-radius: 200px 0 0 0;
+  border-radius: 100% 0 0 0;
+  /*box-shadow: 5px 5px brown;*/
+
 }
 .green {
   background-color: green;
-  border-radius:  0 0 0 200px;
-
+  border-radius:  0 0 0 100%;
+  /*box-shadow: 5px 5px brown;*/
 }
 .blue {
   background-color: blue;
-  border-radius:  0 200px 0 0;
+  border-radius:  0 100% 0 0;
+  /*box-shadow:  5px 5px brown;*/
+
 }
 .yellow {
   background-color: yellow;
-  border-radius:  0 0 200px 0;
+  border-radius:  0 0 100% 0;
+  /*box-shadow:  5px 5px brown;*/
+
 }
 
 .lightUp {
-  opacity: 1;
+  opacity: 1 !important;
 }
 
  #startGame {
-   border: 10px solid white;
+   border: 15px solid #fff;
    position:absolute;
    z-index: 2;
    top: 125px;
@@ -71,9 +85,11 @@ p {
   height: 150px;
   border-radius: 100px;
   font-size: 25px;
-
  }
  #startGame:hover{
    color:white;
-   background-color: #333;
+   background-color: #666;
  }
+#startGame:focus{
+  outline: none;
+}

@@ -41,7 +41,7 @@ function newRound(){
 /////// ****** Delay the animation
   delayPlay(function(){animate(sequence)},300);
 
-  $('p').html('Round: ' + currentRound);
+  $('.round').html('Round: ' + currentRound);
 }
 
 ////// ***** HIGH SCORE
@@ -88,7 +88,7 @@ function checkBoth(value1, value2) {
 ////// ********* AUDIO
 function playAudio(audioID) {
         let audio = $('<audio autoplay></audio>');
-          audio.append('<source src="sounds/'+audioID+'.mp3" type="audio/mp3" />');
+          audio.append('<source src="sounds/'+audioID+'.mp3" type="audio/mp3"/>');
 }
 
 
@@ -105,7 +105,8 @@ function checkCurrentClick(){
       if (checkBoth(numbToCheck, colorClicked)){
           clickCount++;
       } else {  ///// triggers game over
-          $('p').html('Sorry Game Over')
+          $('.round').html('Sorry Game Over')
+          playAudio('buzzer');
           highScore();
           resetGame();
       }
@@ -115,13 +116,14 @@ function checkCurrentClick(){
           newRound();
 
       } else {  ///// triggers game over
-          $('p').html('Sorry Game Over')
+          $('.round').html('Sorry Game Over')
+          playAudio('buzzer');
           highScore();
-
           resetGame();
       }
     }
 }
+
 
 ////  used some of the code found here for the animate sequence
 /////   https://codeplanet.io/building-simon-says-javascript/

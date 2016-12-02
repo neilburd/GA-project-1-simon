@@ -6,7 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
-
+  <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Francois+One|Russo+One" rel="stylesheet">
 </head>
 <body>
 
@@ -15,13 +16,17 @@
     <header id="head">
 
       <h1>Simon Says</h1>
-      <p>Please press start to begin game.</p>
+      <p>Please press start to begin a new game.</p>
+      <div class="highScores">
+
+        <h3>High Score</h3>
+        <p class="round">Round</p>
+
+      </div>
 
     </header>
 
     <div id="containerGame">
-
-
         <button id="startGame" type="button">START</button>
 
         <div class="color red hover" data-color="0">
@@ -46,10 +51,8 @@
         </div>
 
     </div><!--END continer -->
+    <p class="level10">Can you beat level 10?</p>
 
-    <div class="highScores">
-      <h3>High Score</h3>
-    </div>
 
 </section>
 

@@ -12,6 +12,9 @@ header {
   flex-flow: column;*/
 
 }
+button {
+  font-family: 'Russo One', Helvetica, sans-serif;
+}
 
 .highScores {
   width:50%;
@@ -64,8 +67,8 @@ p {
   margin: 50px auto;
   position: relative;
   border-radius: 100%;
-  border: 10px solid #fff;
-  background-color: #fff;
+  border: 10px solid #eee;
+  background-color: #eee;
   box-shadow:  0 0 20px 2px rgba(100,100,100,.5);
 }
 
@@ -73,19 +76,22 @@ p {
   float:left;
   width: 180px;
   height: 180px;
-  opacity: 0.3;
+  opacity: 0.5;
   margin: 10px;
+  border-radius: 100%;
   /*border: 10px solid black;*/
   -webkit-transition: opacity 30ms ease;
 	-moz-transition: opacity 30ms ease;
 	-ms-transition: opacity 30ms ease;
 	-o-transition: opacity 30ms ease;
 	transition: opacity 30ms ease;
-  /*transition: opacity 100ms ease;*/
+
+
 }
 
 .hover:hover {
-  opacity: .5;
+  /*opacity: .5;*/
+  box-shadow:  0 0 20px #222;
 
 }
 
@@ -104,6 +110,7 @@ p {
   background-color: blue;
   border-radius:  0 100% 0 0;
   /*box-shadow:  5px 5px brown;*/
+t
 
 }
 .yellow {
@@ -118,7 +125,7 @@ p {
 }
 
  #startGame {
-   border: 15px solid #fff;
+   border: 15px solid #eee;
    position:absolute;
    z-index: 2;
    top: 125px;
@@ -130,7 +137,9 @@ p {
  }
  #startGame:hover{
    color:white;
-   background-color: #666;
+   background-color: #aaa;
+   box-shadow:  inset 0 0 15px #000;
+
  }
 #startGame:focus{
   outline: none;

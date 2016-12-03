@@ -1,6 +1,5 @@
 /*jshint esversion: 6 */
 $(document).ready(function(){
-console.log("Hello World!");
 
 let sequence = [];
 let clickCount = 0;
@@ -36,7 +35,7 @@ function delayPlay(toDelay, time) {
 function newRound(){
   currentRound++;
   clickCount = 1;
-  speed = speed - 50;
+  speed = speed - 20;
   addToSequence();
 /////// ****** Delay the animation
   delayPlay(function(){animate(sequence)},300);
@@ -93,37 +92,34 @@ function playAudio(audioID) {
 
 
 /////*********  cHECKS THE USER INPUT AGAINST THE SEQUENCE AT THE CORRECT INDEX  IMPORTANT FUNCTION
-function checkCurrentClick(){
-  let numbToCheck = sequence[clickCount-1];
-  let colorClicked = $(this).data('color');
-  let seqLength = sequence.length;
-  let audioID = parseInt(colorClicked+1);
+function checkCurrentClick(){let numbToCheck = sequence[clickCount - 1];
+let colorClicked = $(this).data('color');
+let seqLength = sequence.length;
+let audioID = parseInt(colorClicked + 1);
 // console.log(audioID + " AudioID ");
-  playAudio(audioID);
-  lightUp(colorClicked);
-    if (clickCount < seqLength) { //// checks if under the sequence.length
-      if (checkBoth(numbToCheck, colorClicked)){
-          clickCount++;
-      } else {  ///// triggers game over
-          $('.round').html('Sorry Game Over')
-          playAudio('buzzer');
-          highScore();
-          resetGame();
-      }
-
-    } else if (clickCount === seqLength){ // checks if the two are the same so that the next round can be triggered
-      if (checkBoth(numbToCheck, colorClicked)){ ///if  undnder or equal to the sequence length  and numbToCheck and the color are correct
-          newRound();
-
-      } else {  ///// triggers game over
-          $('.round').html('Sorry Game Over')
-          playAudio('buzzer');
-          highScore();
-          resetGame();
-      }
+playAudio(audioID);
+lightUp(colorClicked);
+if (clickCount < seqLength) { //// checks if under the sequence.length
+    if (checkBoth(numbToCheck, colorClicked)) {
+        clickCount++;
+    } else { ///// triggers game over
+        $('.round').html('Sorry Game Over')
+        playAudio('buzzer');
+        highScore();
+        resetGame();
     }
-}
 
+} else if (clickCount === seqLength) { // checks if the two are the same so that the next round can be triggered
+    if (checkBoth(numbToCheck, colorClicked)) { ///if  undnder or equal to the sequence length  and numbToCheck and the color are correct
+        newRound();
+
+    } else { ///// triggers game over
+        $('.round').html('Sorry Game Over')
+        playAudio('buzzer');
+        highScore();
+        resetGame();
+    }
+}}
 
 ////  used some of the code found here for the animate sequence
 /////   https://codeplanet.io/building-simon-says-javascript/

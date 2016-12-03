@@ -8,6 +8,9 @@ let speed = 600;
 let audio ;
 let highScores = [];
 let highScoreValue = localStorage.getItem("highScore");
+let keyPress;
+let keyboard;
+
 //// Gets the High Score from local storage and display it
 $('.highScores h3').html('Your High Score is: '+ highScoreValue);
 ///// start buttom
@@ -17,6 +20,24 @@ $(".red").on('click', checkCurrentClick);
 $(".blue").on('click', checkCurrentClick);
 $(".green").on('click', checkCurrentClick);
 $(".yellow").on('click', checkCurrentClick);
+
+$('#keyboardInit').on('click', keyboardOnOff);
+
+
+function keyboardOnOff() {
+  if (keyboard) {
+    $('.keyboard').show(100, function(){
+      keyboard = false;
+      keyboardPress();
+    });
+  } else if (!keyboard) {
+    $('.keyboard').hide(100, function(){
+      keyboard = true;
+      keyboardPress();
+    });
+  }
+}
+
 /// ******* initialized on start button click
 function newGame() {
   resetGame();
@@ -34,11 +55,36 @@ function newRound(){
   speed = speed - 20;
   addToSequence();
   /////// ****** Delay the animation
-  delayPlay(function(){animate(sequence)},300);
+  delayPlay(function(){animate(sequence);},300);
 
   $('.round').html('Round: ' + currentRound);
 }
 
+function keyboardPress(){
+  $( document ).keydown(function( event ) {
+    if ( event.which == 68 ) {      /// d
+        keyPress = 0;//// SETTING THE VALUE TO PASS INTO USER
+        console.log(keyPress + " d was pressed");
+        lightUp(5);
+        event.preventDefault();
+    } else if (event.which == 70) { /// f
+        keyPress = 1;//// SETTING THE VALUE TO PASS INTO USER
+        event.preventDefault();
+        lightUp(6);
+        console.log(keyPress + " f was pressed");
+    } else if (event.which == 74) { /// j
+        keyPress = 2;//// SETTING THE VALUE TO PASS INTO USER
+        event.preventDefault();
+        lightUp(7);
+        console.log(keyPress + " j was pressed");
+    } else if (event.which == 75) { /// k
+        keyPress = 3;//// SETTING THE VALUE TO PASS INTO USER
+        event.preventDefault();
+        lightUp(8);
+        console.log(keyPress + " k was pressed");
+    }
+  });
+}
   ////// ***** HIGH SCORE
 function highScore(){
   highScores.push(currentRound-1);
@@ -92,6 +138,11 @@ function checkCurrentClick(){
   let seqLength = sequence.length;
   let audioID = parseInt(colorClicked + 1);
   // console.log(audioID + " AudioID ");
+
+
+
+
+
   playAudio(audioID);
   lightUp(colorClicked);
 
@@ -99,7 +150,7 @@ function checkCurrentClick(){
     if (checkBoth(numbToCheck, colorClicked)) {
         clickCount++;
     } else { ///// triggers game over
-        $('.round').html('Sorry Game Over')
+        $('.round').html('Sorry Game Over');
         playAudio('buzzer');
         highScore();
         resetGame();
@@ -111,7 +162,7 @@ function checkCurrentClick(){
 
       }
       else { ///// triggers game over
-        $('.round').html('Sorry Game Over')
+        $('.round').html('Sorry Game Over');
         playAudio('buzzer');
         highScore();
         resetGame();

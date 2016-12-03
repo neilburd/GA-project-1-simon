@@ -1,6 +1,6 @@
 body{
-  background-color: #ccc;
-  background-image: url('img/ps_neutral.png');
+  background-color: #eee;
+  /*background-image: url('img/ps_neutral.png');*/
 
 }
 
@@ -143,4 +143,63 @@ t
  }
 #startGame:focus{
   outline: none;
+}
+
+.keyboard {
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+
+.keyButton {
+  float:left;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  padding: 20px;
+  font-size: 2em;
+  font-family: 'Francois One', sans-serif;
+  border-radius: 5px;
+  background-color: #ff8c3a;
+  color:#fff;
+  margin: 0 auto 50px auto;
+  justify-content: space-around;
+}
+ .d {
+  background-color: red;
+  opacity: .5;
+}
+ .f {
+  background-color: blue;
+  opacity: .5;
+}
+ .j {
+  background-color: green;
+  opacity: .5;
+}
+ .k {
+  background-color: yellow;
+  opacity: .5;
+}
+
+.keyButton > p{
+  margin:auto;
+}
+#keyboardInit {
+  margin: 0 auto 25px auto;
+  height:40px;
+  width:400px;
+  display:block;
+  font-size: 1em;
+  background-color: orange;
+  border-radius: 10px;
+  border: 1px solid #333;
+}
+#keyboardInit:focus{
+   outline: none;
+}
+#keyboardInit:hover{
+  background-color: #333;
+  color: #fff;
 }

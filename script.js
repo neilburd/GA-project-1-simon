@@ -65,6 +65,7 @@ $(document).ready(function() {
             keypress = true;
             checkCurrentClick();
         }
+        keypress = false;
         event.preventDefault();
     });
     ////// ***** HIGH SCORE

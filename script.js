@@ -8,8 +8,24 @@ let speed = 600;
 let audio ;
 let highScores = [];
 let highScoreValue = localStorage.getItem("highScore");
-let keyPress;
-let keyboard;
+let keypress = false;
+let keypressVal;
+// let keyboard;
+
+// let keyCode = {
+//     87: function(){
+//           console.log("87 = w this worked");
+//         },
+//     69: function(){
+//           console.log("69 = e this worked");
+//         },
+//     83: function(){
+//           console.log("83 = s this worked");
+//         },
+//     68: function(){
+//           console.log("68 = d this worked");
+//         }
+// };
 
 //// Gets the High Score from local storage and display it
 if (highScoreValue > 0){
@@ -17,6 +33,7 @@ $('.highScores h3').html('Your High Score is: '+ highScoreValue);
 } else {
 $('.highScores h3').html('No High Score yet');
 }
+
 ///// start buttom
 $('#startGame').on('click', newGame);
 ///// color buttons
@@ -25,23 +42,12 @@ $(".blue").on('click', checkCurrentClick);
 $(".green").on('click', checkCurrentClick);
 $(".yellow").on('click', checkCurrentClick);
 
-$('#keyboardInit').on('click', keyboardOnOff);
-$('.keyButton').hide(100, function(){
-  keyboard = false;
-});
-function keyboardOnOff() {
-  if (!keyboard) {
-    $('.keyButton').show(100, function(){
-      keyboard = true;
-      keyboardPress();
-    });
-  } else if (keyboard) {
-    $('.keyButton').hide(100, function(){
-      keyboard = false;
-      keyboardPress();
-    });
-  }
-}
+// $('#keyboardInit').on('click', keyboardOnOff);
+
+// $('.keyButton').hide(100, function(){
+//   keyboard = false;
+// });
+
 
 /// ******* initialized on start button click
 function newGame() {
@@ -65,35 +71,49 @@ function newRound(){
   $('.round').html('Round: ' + currentRound);
 }
 
-function keyboardPress(){
-  $( document ).keydown(function( event ) {
-    if ( event.which == 87 ) {      /// d
-        keyPress = 0;//// SETTING THE VALUE TO PASS INTO USER
-        console.log(keyPress + " d was pressed");
-        lightUp(5);
-        checkCurrentClick();
-        event.preventDefault();
-    } else if (event.which == 69) { /// f
-        keyPress = 1;//// SETTING THE VALUE TO PASS INTO USER
-        event.preventDefault();
-        lightUp(6);
-        checkCurrentClick();
-        console.log(keyPress + " f was pressed");
-    } else if (event.which == 83) { /// j
-        keyPress = 2;//// SETTING THE VALUE TO PASS INTO USER
-        event.preventDefault();
-        lightUp(7);
-        checkCurrentClick();
-        console.log(keyPress + " j was pressed");
-    } else if (event.which == 68) { /// k
-        keyPress = 3;//// SETTING THE VALUE TO PASS INTO USER
-        event.preventDefault();
-        lightUp(8);
-        checkCurrentClick();
-        console.log(keyPress + " k was pressed");
-    }
-  });
-}
+// function keyboardOnOff() { ///// SHows the letters on the screen
+//   if (!keyboard) {
+//     $('.keyButton').show(100, function(){
+//       keyboard = true;
+//       // keyboardPress();
+//     });
+//   } else if (keyboard) {
+//     $('.keyButton').hide(100, function(){
+//       keyboard = false;
+//       // keyboardPress();
+//     });
+//   }
+// }
+
+$( document ).keypress( function( event ){
+  let code = event.which;
+  // console.log(code);
+
+  if ( code == 119 ) {
+      keyPressVal = 0;//// SETTING THE VALUE TO PASS INTO USER
+      keypress = true;
+      checkCurrentClick();
+      // console.log($(this) + " w was pressed");
+  } else if ( code == 101 ) {
+      keyPressVal = 1;//// SETTING THE VALUE TO PASS INTO USER
+      keypress = true;
+      checkCurrentClick();
+      // console.log($(this) + " e was pressed");
+  } else if ( code == 115 ) {
+      keyPressVal = 2;//// SETTING THE VALUE TO PASS INTO USER
+      keypress = true;
+      checkCurrentClick();
+      // console.log($(this) + " s was pressed");
+  } else if ( code == 100 ) {
+      keyPressVal = 3;//// SETTING THE VALUE TO PASS INTO USER
+      keypress = true;
+      checkCurrentClick();
+      // console.log($(this) + " d was pressed");
+  }
+  event.preventDefault();
+
+  }
+);
   ////// ***** HIGH SCORE
 function highScore(){
   highScores.push(currentRound-1);
@@ -102,7 +122,7 @@ function highScore(){
   highScoreValue = highScores[0];
   if ( highScoreValue < 0 ){
     highScoreValue = 0;
-  
+  }
   $('.highScores h3').html('Your High Score is: '+ highScoreValue);
   ////// ***** Save localy
   localStorage.setItem("highScore", highScoreValue);
@@ -145,19 +165,19 @@ function playAudio(audioID) {
 
 /////*********  cHECKS THE USER INPUT AGAINST THE SEQUENCE AT THE CORRECT INDEX  IMPORTANT FUNCTION
 function checkCurrentClick(){
-  let colorClicked;
+
+  let colorClicked = $(this).data('color');
   let numbToCheck = sequence[clickCount - 1];
   let seqLength = sequence.length;
-  // console.log(audioID + " AudioID ");
-  console.log(keyboard + " value of keyboard");
+  // console.log(keyboard + " value of keyboard");
 
-  if (keyboard){
-    colorClicked = keyPress;
-    console.log(colorClicked + " colorClicked" + " " + keyPress + " keyPress");
-  } else {
-    colorClicked = $(this).data('color');
+  if (keypress){
+    colorClicked = keyPressVal;
   }
+
+
   let audioID = parseInt(colorClicked + 1);
+  // console.log(audioID + " audioID");
 
   playAudio(audioID);
   lightUp(colorClicked);

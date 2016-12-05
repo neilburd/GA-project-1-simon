@@ -10,6 +10,13 @@ $(document).ready(function() {
     let highScoreValue = localStorage.getItem("highScore");
     let keypress = false;
     let keypressVal;
+
+    let audio1 = new Audio("sounds/1.mp3");
+    let audio2 = new Audio("sounds/2.mp3");
+    let audio3 = new Audio("sounds/3.mp3");
+    let audio4 = new Audio("sounds/4.mp3");
+    let buzzer = new Audio("sounds/buzzer.mp3");
+    
     // let keyboard;
     //// Gets the High Score from local storage and display it
     if (highScoreValue > 0) {
@@ -106,8 +113,25 @@ $(document).ready(function() {
     }
     ////// ********* AUDIO
     function playAudio(audioID) {
-        let audio = $('<audio autoplay></audio>');
-        audio.append('<source src="sounds/' + audioID + '.mp3" type="audio/mp3"/>');
+
+      switch (audioID) {
+        case 1:
+          audio1.play();
+          break;
+        case 2:
+          audio2.play();
+          break;
+        case 3:
+          audio3.play();
+          break;
+        case 4:
+          audio4.play();
+          break;
+        case 'buzzer':
+          buzzer.play();
+          break;
+
+      }
     }
     /////*********  cHECKS THE USER INPUT AGAINST THE SEQUENCE AT THE CORRECT INDEX  IMPORTANT FUNCTION
     function checkCurrentClick() {
@@ -118,6 +142,9 @@ $(document).ready(function() {
             colorClicked = keyPressVal;
         }
         let audioID = parseInt(colorClicked + 1);
+        // let audioID2 = "audio"+audioID;
+        // console.log(audioID2);
+        // audioID2.play();
 
         playAudio(audioID);
         lightUp(colorClicked);

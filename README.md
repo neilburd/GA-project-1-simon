@@ -1,6 +1,7 @@
 #Simon Says
 
-Simon says is a memory skill game in which the user repeats the pattern created by the computer. My aproach to this game was to first break down step by step how the game was played. I diagramed gameplay to understand what I would need to program. This game is deceptively easy, but there are more steps to this than it seems.
+Simon says is a memory skill game in which the user repeats the pattern created by the computer.
+My aproach to this game was to first break down step by step how the game was played. I diagramed gameplay to understand what I would need to program. This game is deceptively easy, but there are more steps to this than it seems.
 
 1. the user needs to start the game somehow
 2. the user is then presented with a pattern, in this game:
